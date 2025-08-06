@@ -1,0 +1,84 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Exercícios de Agrupamentos de Dados")
+	fmt.Println("================================")
+	fmt.Println("Exercício 1:")
+	exercicio1()
+	fmt.Println("\nExercício 2:")
+	exercicio2()
+	fmt.Println("\nExercício 3:")
+	exercicio3()
+	fmt.Println("\nExercício 4:")
+	exercicio4()
+}
+
+func exercicio1() {
+	//	Usando uma literal composta:
+	//
+	// Crie um array que suporte 5 valores to tipo int
+	// Atribua valores aos seus índices
+	// Utilize range e demonstre os valores do array.
+	// Utilizando format printing, demonstre o tipo do array.
+
+	array := [5]int{10, 20, 30, 40, 50}
+
+	for i, v := range array {
+		fmt.Println("Índice:", i, "Valor:", v)
+	}
+
+	fmt.Printf("Tipo do array: %T\n", array)
+}
+
+func exercicio2() {
+	// 	Usando uma literal composta:
+	// Crie uma slice de tipo int
+	// Atribua 10 valores a ela
+	// Utilize range para demonstrar todos estes valores.
+	// E utilize format printing para demonstrar seu tipo.
+
+	slice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	for i, v := range slice {
+		fmt.Println("Índice:", i, "Valor:", v)
+	}
+	fmt.Printf("Tipo da slice: %T\n", slice)
+}
+
+func exercicio3() {
+	//	Utilizando como base o exercício anterior, utilize slicing para demonstrar os valores:
+	// Do primeiro ao terceiro item do slice (incluindo o terceiro item!)
+	// Do quinto ao último item do slice (incluindo o último item!)
+	// Do segundo ao sétimo item do slice (incluindo o sétimo item!)
+	// Do terceiro ao penúltimo item do slice (incluindo o penúltimo item!)
+	// Desafio: obtenha o mesmo resultado acima utilizando a função len() para determinar o penúltimo item
+
+	slice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Println("Do primeiro ao terceiro item:", slice[0:3])
+	fmt.Println("Do quinto ao último item:", slice[4:])
+	fmt.Println("Do segundo ao sétimo item:", slice[1:7])
+	fmt.Println("Do terceiro ao penúltimo item:", slice[2:9])
+	// Desafio: obtenha o mesmo resultado acima utilizando a função len() para determinar o penúltimo item
+	fmt.Println("Do terceiro ao penúltimo item (usando len()):", slice[2:len(slice)-1])
+}
+
+func exercicio4() {
+	//	Começando com a seguinte slice:
+	// x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+	// Anexe a ela o valor 52;
+	// Anexe a ela os valores 53, 54 e 55 utilizando uma única declaração;
+	// Demonstre a slice;
+	// Anexe a ela a seguinte slice:
+	// y := []int{56, 57, 58, 59, 60}
+	// Demonstre a slice x.
+
+	x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+	x = append(x, 52)
+	x = append(x, 53, 54, 55)
+	fmt.Println("Slice após anexar 52, 53, 54 e 55:", x)
+
+	y := []int{56, 57, 58, 59, 60}
+	x = append(x, y...) // Anexa a slice y a x
+	fmt.Println("Slice x após anexar y:", x)
+}
