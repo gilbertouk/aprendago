@@ -148,16 +148,16 @@ func exercicio8() {
 	// Value deve conter os hobbies favoritos da pessoa
 	// Demonstre todos esses valores e seus índices.
 
-	hobbies := make(map[string][]string)
-
-	hobbies["Silva_Alice"] = []string{"Leitura"}
-	hobbies["Santos_Bob"] = []string{"Futebol"}
-	hobbies["Oliveira_Carol"] = []string{"Cozinhar"}
+	hobbies := map[string][]string{
+		"Silva_Alice":    {"Leitura", "Viajar"},
+		"Santos_Bob":     {"Futebol", "Natação", "Caminhada"},
+		"Oliveira_Carol": {"Cozinhar"},
+	}
 
 	for nome, hobby := range hobbies {
 		fmt.Printf("Nome: %s\n", nome)
 		for i, h := range hobby {
-			fmt.Printf("  Hobby %d: %s\n", i+1, h)
+			fmt.Printf("\tHobby %d: %s\n", i+1, h)
 		}
 	}
 }
@@ -190,10 +190,13 @@ func exercicio10() {
 	hobbies["Oliveira_Carol"] = []string{"Cozinhar"}
 	hobbies["Souza_Daniel"] = []string{"Caminhada"}
 
+	// remover o item "Oliveira_Carol"
+	delete(hobbies, "Oliveira_Carol")
+
 	for nome, hobby := range hobbies {
 		fmt.Printf("Nome: %s\n", nome)
 		for i, h := range hobby {
-			fmt.Printf("  Hobby %d: %s\n", i+1, h)
+			fmt.Printf("\tHobby %d: %s\n", i+1, h)
 		}
 	}
 }
