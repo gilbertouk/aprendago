@@ -13,6 +13,18 @@ func main() {
 	exercicio3()
 	fmt.Println("\nExercício 4:")
 	exercicio4()
+	fmt.Println("\nExercício 5:")
+	exercicio5()
+	fmt.Println("\nExercício 6:")
+	exercicio6()
+	fmt.Println("\nExercício 7:")
+	exercicio7()
+	fmt.Println("\nExercício 8:")
+	exercicio8()
+	fmt.Println("\nExercício 9:")
+	exercicio9()
+	fmt.Println("\nExercício 10:")
+	exercicio10()
 }
 
 func exercicio1() {
@@ -81,4 +93,107 @@ func exercicio4() {
 	y := []int{56, 57, 58, 59, 60}
 	x = append(x, y...) // Anexa a slice y a x
 	fmt.Println("Slice x após anexar y:", x)
+}
+
+func exercicio5() {
+	//	Comece com essa slice:	//
+	// x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+	// Utilizando slicing e append, crie uma slice y que contenha os valores:
+	// [42, 43, 44, 48, 49, 50, 51]
+
+	x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+	x = append(x[:3], x[6:]...)
+	fmt.Println("Slice x:", x)
+}
+
+func exercicio6() {
+	//	Crie uma slice usando make que possa conter todos os estados do Brasil.	//
+	// Os estados: "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+	// Demonstre o len e cap da slice.
+	// Demonstre todos os valores da slice sem utilizar range.
+
+	estados := make([]string, 0)
+	estados = append(estados, "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins")
+
+	fmt.Println("Quantidade de estados:", len(estados))
+	fmt.Println("Capacidade da slice:", cap(estados))
+	fmt.Println("Estados do Brasil:")
+	for i := 0; i < len(estados); i++ {
+		fmt.Println(estados[i])
+	}
+}
+
+func exercicio7() {
+	// Crie uma slice contendo slices de strings ([][]string). Atribua valores a este slice multi-dimensional da seguinte maneira:
+	// "Nome", "Sobrenome", "Hobby favorito"
+	// Inclua dados para 3 pessoas, e utilize range para demonstrar estes dados.
+
+	pessoas := [][]string{
+		{"Alice", "Silva", "Leitura"},
+		{"Bob", "Santos", "Futebol"},
+		{"Carol", "Oliveira", "Cozinhar"},
+	}
+
+	for i, pessoa := range pessoas {
+		fmt.Printf("Pessoa %d:\n", i+1)
+		for j, dado := range pessoa {
+			fmt.Printf("  Dado %d: %s\n", j+1, dado)
+		}
+	}
+}
+
+func exercicio8() {
+	//	Crie um map com key tipo string e value tipo []string.
+	// Key deve conter nomes no formato sobrenome_nome
+	// Value deve conter os hobbies favoritos da pessoa
+	// Demonstre todos esses valores e seus índices.
+
+	hobbies := make(map[string][]string)
+
+	hobbies["Silva_Alice"] = []string{"Leitura"}
+	hobbies["Santos_Bob"] = []string{"Futebol"}
+	hobbies["Oliveira_Carol"] = []string{"Cozinhar"}
+
+	for nome, hobby := range hobbies {
+		fmt.Printf("Nome: %s\n", nome)
+		for i, h := range hobby {
+			fmt.Printf("  Hobby %d: %s\n", i+1, h)
+		}
+	}
+}
+
+func exercicio9() {
+	// Utilizando o exercício anterior, adicione uma entrada ao map e demonstre o map inteiro utilizando range.
+
+	hobbies := make(map[string][]string)
+
+	hobbies["Silva_Alice"] = []string{"Leitura"}
+	hobbies["Santos_Bob"] = []string{"Futebol"}
+	hobbies["Oliveira_Carol"] = []string{"Cozinhar"}
+
+	hobbies["Souza_Daniel"] = []string{"Caminhada"}
+
+	for nome, hobby := range hobbies {
+		fmt.Printf("Nome: %s\n", nome)
+		for i, h := range hobby {
+			fmt.Printf("  Hobby %d: %s\n", i+1, h)
+		}
+	}
+}
+
+func exercicio10() {
+	// Utilizando o exercício anterior, remova uma entrada do map e demonstre o map inteiro utilizando range.
+
+	hobbies := make(map[string][]string)
+	hobbies["Silva_Alice"] = []string{"Leitura"}
+	hobbies["Santos_Bob"] = []string{"Futebol"}
+	hobbies["Oliveira_Carol"] = []string{"Cozinhar"}
+	hobbies["Souza_Daniel"] = []string{"Caminhada"}
+
+	for nome, hobby := range hobbies {
+		fmt.Printf("Nome: %s\n", nome)
+		for i, h := range hobby {
+			fmt.Printf("  Hobby %d: %s\n", i+1, h)
+		}
+	}
 }
